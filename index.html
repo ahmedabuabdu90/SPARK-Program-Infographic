@@ -121,6 +121,11 @@
             position: relative;
         }
 
+        /* تم إصلاح المشكلة هنا - إزالة overflow:hidden من body */
+        html {
+            overflow-x: hidden;
+        }
+
         /* Advanced Glassmorphism */
         .glass-panel {
             background: rgba(255, 255, 255, 0.08);
@@ -335,9 +340,18 @@
         .magnetic-btn:hover {
             transform: scale(1.05);
         }
+
+        /* إصلاح المشكلة - التأكد من أن المحتوى يمكن التمرير له */
+        .main-content {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem 0;
+        }
     </style>
 </head>
-<body class="grid-bg min-h-screen flex items-center justify-center p-4 md:p-8 relative overflow-hidden">
+<body class="grid-bg min-h-screen relative overflow-x-hidden">
 
     <!-- Advanced Particle System -->
     <div id="particles-container" class="fixed inset-0 z-0"></div>
@@ -354,201 +368,227 @@
     <div class="sparkle" style="bottom: 20%; right: 25%; animation-delay: 1.5s;"></div>
     <div class="sparkle" style="top: 40%; left: 50%; animation-delay: 2s;"></div>
 
-    <!-- Main Container -->
-    <div class="glass-panel-intense w-full max-w-6xl rounded-3xl p-8 md:p-12 relative overflow-hidden border border-white/10 shadow-2xl glow-border">
+    <!-- Main Container - تم إصلاح المشكلة هنا -->
+    <div class="main-content w-full flex items-center justify-center p-4 md:p-8">
+        <div class="glass-panel-intense w-full max-w-6xl rounded-3xl p-8 md:p-12 relative overflow-hidden border border-white/10 shadow-2xl glow-border">
 
-        <!-- Header Section -->
-        <header class="text-center mb-16 relative z-10">
-            <div class="orbit-container mx-auto mb-8">
-                <div class="orbit-item">
-                    <div class="w-32 h-32 bg-gradient-to-br from-sparkBlue to-sparkPurple rounded-full flex items-center justify-center text-white text-4xl font-black shadow-2xl animate-pulse-glow">
-                        SPARK
+            <!-- Header Section -->
+            <header class="text-center mb-16 relative z-10">
+                <div class="orbit-container mx-auto mb-8">
+                    <div class="orbit-item">
+                        <div class="w-32 h-32 bg-gradient-to-br from-sparkBlue to-sparkPurple rounded-full flex items-center justify-center text-white text-4xl font-black shadow-2xl animate-pulse-glow">
+                            SPARK
+                        </div>
+                    </div>
+                    <!-- Orbiting Elements -->
+                    <div class="particle absolute top-0 left-1/2 w-6 h-6 bg-sparkOrange rounded-full animate-orbit"></div>
+                    <div class="particle absolute top-0 left-1/2 w-4 h-4 bg-sparkTeal rounded-full animate-orbit" style="animation-delay: -5s; animation-duration: 15s;"></div>
+                    <div class="particle absolute top-0 left-1/2 w-5 h-5 bg-sparkPurple rounded-full animate-orbit" style="animation-delay: -10s; animation-duration: 25s;"></div>
+                </div>
+
+                <h1 class="text-6xl md:text-7xl font-black mb-6 tracking-tight">
+                    <span class="gradient-text animate-neon">SPARK</span>
+                    <span class="block text-4xl md:text-5xl font-bold text-white/90 mt-4 shimmer-text">
+                        INNOVATION & ENTREPRENEURSHIP
+                    </span>
+                </h1>
+                
+                <div class="inline-block glass-panel-intense px-8 py-4 rounded-2xl mt-6 border border-white/20">
+                    <p class="text-xl md:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-sparkOrange to-yellow-400 tracking-wide uppercase animate-pulse">
+                        Empowering Youth & Women to Solve Community Challenges
+                    </p>
+                </div>
+            </header>
+
+            <!-- Program Purpose -->
+            <section class="mb-20 relative z-10">
+                <div class="glass-panel-intense rounded-2xl p-10 border-l-4 border-sparkBlue hover-3d">
+                    <h2 class="text-2xl font-bold text-sparkBlue uppercase tracking-widest mb-6 flex items-center">
+                        <i class="fas fa-bullseye mr-3 text-sparkOrange"></i>
+                        Program Purpose
+                    </h2>
+                    <p class="text-3xl md:text-4xl font-medium leading-relaxed text-white/90 text-center">
+                        "To equip youth and women with the 
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-sparkBlue to-cyan-400 font-bold">skills</span>, 
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-sparkOrange to-yellow-400 font-bold">tools</span> and 
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-sparkPurple to-pink-400 font-bold">mindset</span> 
+                        to transform real community challenges into practical, low-cost, and scalable solutions."
+                    </p>
+                </div>
+            </section>
+
+            <!-- Program Journey -->
+            <section class="mb-20 relative z-10">
+                <div class="flex items-center gap-6 mb-12">
+                    <h2 class="text-4xl font-black text-white flex items-center">
+                        <i class="fas fa-rocket mr-4 text-sparkOrange"></i>
+                        THE PROGRAM JOURNEY
+                    </h2>
+                    <div class="h-1 flex-grow bg-gradient-to-r from-sparkBlue via-sparkPurple to-sparkOrange rounded-full"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                    <!-- Pillar 1 -->
+                    <div class="glass-panel rounded-2xl p-6 text-center transform transition-all duration-500 hover-3d group relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="floating-icon w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <h3 class="font-black text-xl mb-4 text-white leading-tight">Ideation & Problem Framing</h3>
+                        <ul class="text-white/80 space-y-2 text-sm font-medium">
+                            <li class="flex items-center justify-center"><i class="fas fa-check text-sparkOrange mr-2"></i> Design Thinking</li>
+                            <li class="flex items-center justify-center"><i class="fas fa-check text-sparkOrange mr-2"></i> Human-Centered Design</li>
+                            <li class="flex items-center justify-center"><i class="fas fa-check text-sparkOrange mr-2"></i> Solution Discovery</li>
+                        </ul>
+                    </div>
+
+                    <!-- Pillar 2 -->
+                    <div class="glass-panel rounded-2xl p-6 text-center transform transition-all duration-500 hover-3d group relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-sparkBlue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="floating-icon w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-sparkBlue to-cyan-500 rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg">
+                            <i class="fa-solid fa-cube"></i>
+                        </div>
+                        <h3 class="font-black text-xl mb-4 text-white leading-tight">Prototyping & Development</h3>
+                        <ul class="text-white/80 space-y-2 text-sm font-medium">
+                            <li class="flex items-center justify-center"><i class="fas fa-check text-sparkBlue mr-2"></i> 3D Printing (Mockups)</li>
+                            <li class="flex items-center justify-center"><i class="fas fa-check text-sparkBlue mr-2"></i> Electronics Basics</li>
+                            <li class="flex items-center justify-center"><i class="fas fa-check text-sparkBlue mr-2"></i> Sensors/Controllers</li>
+                        </ul>
+                    </div>
+
+                    <!-- Pillar 3 -->
+                    <div class="glass-panel rounded-2xl p-6 text-center transform transition-all duration-500 hover-3d group relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="floating-icon w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <h3 class="font-black text-xl mb-4 text-white leading-tight">Entrepreneurship Skills</h3>
+                        <ul class="text-white/80 space-y-2 text-sm font-medium">
+                            <li class="flex items-center justify-center"><i class="fas fa-check text-green-400 mr-2"></i> Business Model Canvas</li>
+                            <li class="flex items-center justify-center"><i class="fas fa-check text-green-400 mr-2"></i> Customer Discovery</li>
+                            <li class="flex items-center justify-center"><i class="fas fa-check text-green-400 mr-2"></i> Revenue Models</li>
+                        </ul>
+                    </div>
+
+                    <!-- Pillar 4 -->
+                    <div class="glass-panel rounded-2xl p-6 text-center transform transition-all duration-500 hover-3d group relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="floating-icon w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                        <h3 class="font-black text-xl mb-4 text-white leading-tight">Pitching & Market Readiness</h3>
+                        <ul class="text-white/80 space-y-2 text-sm font-medium">
+                            <li class="flex items-center justify-center"><i class="fas fa-check text-purple-400 mr-2"></i> Pitch Deck Development</li>
+                            <li class="flex items-center justify-center"><i class="fas fa-check text-purple-400 mr-2"></i> Storytelling</li>
+                            <li class="flex items-center justify-center"><i class="fas fa-check text-purple-400 mr-2"></i> Demo-Day Sessions</li>
+                        </ul>
+                    </div>
+
+                    <!-- Pillar 5 -->
+                    <div class="glass-panel rounded-2xl p-6 text-center transform transition-all duration-500 hover-3d group relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="floating-icon w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg">
+                            <i class="fa-solid fa-users-rays"></i>
+                        </div>
+                        <h3 class="font-black text-xl mb-4 text-white leading-tight">Mentorship & Coaching</h3>
+                        <ul class="text-white/80 space-y-2 text-sm font-medium">
+                            <li class="flex items-center justify-center"><i class="fas fa-check text-pink-400 mr-2"></i> One-to-One Support</li>
+                            <li class="flex items-center justify-center"><i class="fas fa-check text-pink-400 mr-2"></i> Women-Led Mentorship</li>
+                            <li class="flex items-center justify-center"><i class="fas fa-check text-pink-400 mr-2"></i> Expert Guidance</li>
+                        </ul>
                     </div>
                 </div>
-                <!-- Orbiting Elements -->
-                <div class="particle absolute top-0 left-1/2 w-6 h-6 bg-sparkOrange rounded-full animate-orbit"></div>
-                <div class="particle absolute top-0 left-1/2 w-4 h-4 bg-sparkTeal rounded-full animate-orbit" style="animation-delay: -5s; animation-duration: 15s;"></div>
-                <div class="particle absolute top-0 left-1/2 w-5 h-5 bg-sparkPurple rounded-full animate-orbit" style="animation-delay: -10s; animation-duration: 25s;"></div>
-            </div>
+            </section>
 
-            <h1 class="text-6xl md:text-7xl font-black mb-6 tracking-tight">
-                <span class="gradient-text animate-neon">SPARK</span>
-                <span class="block text-4xl md:text-5xl font-bold text-white/90 mt-4 shimmer-text">
-                    INNOVATION & ENTREPRENEURSHIP
-                </span>
-            </h1>
+            <!-- Program Impact -->
+            <section class="mb-16 relative z-10">
+                <div class="flex items-center gap-6 mb-12">
+                    <h2 class="text-4xl font-black text-white flex items-center">
+                        <i class="fas fa-chart-bar mr-4 text-sparkOrange"></i>
+                        OUR IMPACT 
+                        <span class="text-xl font-normal text-white/70 ml-3">(2020-2025)</span>
+                    </h2>
+                    <div class="h-1 flex-grow bg-gradient-to-r from-sparkOrange via-sparkTeal to-sparkPurple rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Stat 1 -->
+                    <div class="glass-panel-intense rounded-3xl p-8 flex items-center justify-between group hover-3d relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-sparkBlue/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div>
+                            <span class="block text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-sparkBlue to-cyan-500 animate-pulse">200+</span>
+                            <span class="text-white/80 font-semibold leading-tight mt-3 block text-lg">Prototypes & Micro-innovations</span>
+                        </div>
+                        <i class="fa-solid fa-microchip text-5xl text-sparkBlue/50 group-hover:text-sparkBlue transition-colors duration-500 floating-icon"></i>
+                    </div>
+
+                    <!-- Stat 2 -->
+                    <div class="glass-panel-intense rounded-3xl p-8 flex items-center justify-between group hover-3d relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-sparkOrange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div>
+                            <span class="block text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-sparkOrange to-yellow-500 animate-pulse" style="animation-delay: 0.5s;">500+</span>
+                            <span class="text-white/80 font-semibold leading-tight mt-3 block text-lg">Trainees in Innovation & Entrepreneurship</span>
+                        </div>
+                        <i class="fa-solid fa-graduation-cap text-5xl text-sparkOrange/50 group-hover:text-sparkOrange transition-colors duration-500 floating-icon" style="animation-delay: 1s;"></i>
+                    </div>
+
+                    <!-- Stat 3 -->
+                    <div class="glass-panel-intense rounded-3xl p-8 flex items-center justify-between group hover-3d relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-sparkPurple/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div>
+                            <span class="block text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-sparkPurple to-pink-500 animate-pulse" style="animation-delay: 1s;">60%</span>
+                            <span class="text-white/80 font-semibold leading-tight mt-3 block text-lg">Participation by Women & Girls</span>
+                        </div>
+                        <i class="fa-solid fa-venus text-5xl text-sparkPurple/50 group-hover:text-sparkPurple transition-colors duration-500 floating-icon" style="animation-delay: 1.5s;"></i>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="mt-16 text-center">
+                <button class="spark-button text-white font-bold text-lg px-10 py-4 rounded-2xl magnetic-btn">
+                    <i class="fas fa-rocket mr-3"></i>
+                    JOIN THE SPARK MOVEMENT
+                </button>
+            </section>
             
-            <div class="inline-block glass-panel-intense px-8 py-4 rounded-2xl mt-6 border border-white/20">
-                <p class="text-xl md:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-sparkOrange to-yellow-400 tracking-wide uppercase animate-pulse">
-                    Empowering Youth & Women to Solve Community Challenges
-                </p>
-            </div>
-        </header>
-
-        <!-- Program Purpose -->
-        <section class="mb-20 relative z-10">
-            <div class="glass-panel-intense rounded-2xl p-10 border-l-4 border-sparkBlue hover-3d">
-                <h2 class="text-2xl font-bold text-sparkBlue uppercase tracking-widest mb-6 flex items-center">
-                    <i class="fas fa-bullseye mr-3 text-sparkOrange"></i>
-                    Program Purpose
-                </h2>
-                <p class="text-3xl md:text-4xl font-medium leading-relaxed text-white/90 text-center">
-                    "To equip youth and women with the 
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-sparkBlue to-cyan-400 font-bold">skills</span>, 
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-sparkOrange to-yellow-400 font-bold">tools</span> and 
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-sparkPurple to-pink-400 font-bold">mindset</span> 
-                    to transform real community challenges into practical, low-cost, and scalable solutions."
-                </p>
-            </div>
-        </section>
-
-        <!-- Program Journey -->
-        <section class="mb-20 relative z-10">
-            <div class="flex items-center gap-6 mb-12">
-                <h2 class="text-4xl font-black text-white flex items-center">
-                    <i class="fas fa-rocket mr-4 text-sparkOrange"></i>
-                    THE PROGRAM JOURNEY
-                </h2>
-                <div class="h-1 flex-grow bg-gradient-to-r from-sparkBlue via-sparkPurple to-sparkOrange rounded-full"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-                <!-- Pillar 1 -->
-                <div class="glass-panel rounded-2xl p-6 text-center transform transition-all duration-500 hover-3d group relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="floating-icon w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg">
-                        <i class="fa-solid fa-lightbulb"></i>
-                    </div>
-                    <h3 class="font-black text-xl mb-4 text-white leading-tight">Ideation & Problem Framing</h3>
-                    <ul class="text-white/80 space-y-2 text-sm font-medium">
-                        <li class="flex items-center justify-center"><i class="fas fa-check text-sparkOrange mr-2"></i> Design Thinking</li>
-                        <li class="flex items-center justify-center"><i class="fas fa-check text-sparkOrange mr-2"></i> Human-Centered Design</li>
-                        <li class="flex items-center justify-center"><i class="fas fa-check text-sparkOrange mr-2"></i> Solution Discovery</li>
-                    </ul>
+            <!-- Footer -->
+            <footer class="mt-16 text-center border-t border-white/10 pt-8">
+                <p class="text-white/60 text-lg font-medium shimmer-text">Designed for SPARK • Innovation for a Better Future</p>
+                <div class="flex justify-center space-x-6 mt-4">
+                    <a href="#" class="text-white/50 hover:text-sparkBlue transition-colors duration-300 text-xl"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white/50 hover:text-sparkBlue transition-colors duration-300 text-xl"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-white/50 hover:text-sparkBlue transition-colors duration-300 text-xl"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white/50 hover:text-sparkBlue transition-colors duration-300 text-xl"><i class="fab fa-youtube"></i></a>
                 </div>
+            </footer>
 
-                <!-- Pillar 2 -->
-                <div class="glass-panel rounded-2xl p-6 text-center transform transition-all duration-500 hover-3d group relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-sparkBlue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="floating-icon w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-sparkBlue to-cyan-500 rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg">
-                        <i class="fa-solid fa-cube"></i>
-                    </div>
-                    <h3 class="font-black text-xl mb-4 text-white leading-tight">Prototyping & Development</h3>
-                    <ul class="text-white/80 space-y-2 text-sm font-medium">
-                        <li class="flex items-center justify-center"><i class="fas fa-check text-sparkBlue mr-2"></i> 3D Printing (Mockups)</li>
-                        <li class="flex items-center justify-center"><i class="fas fa-check text-sparkBlue mr-2"></i> Electronics Basics</li>
-                        <li class="flex items-center justify-center"><i class="fas fa-check text-sparkBlue mr-2"></i> Sensors/Controllers</li>
-                    </ul>
-                </div>
-
-                <!-- Pillar 3 -->
-                <div class="glass-panel rounded-2xl p-6 text-center transform transition-all duration-500 hover-3d group relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="floating-icon w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg">
-                        <i class="fa-solid fa-chart-line"></i>
-                    </div>
-                    <h3 class="font-black text-xl mb-4 text-white leading-tight">Entrepreneurship Skills</h3>
-                    <ul class="text-white/80 space-y-2 text-sm font-medium">
-                        <li class="flex items-center justify-center"><i class="fas fa-check text-green-400 mr-2"></i> Business Model Canvas</li>
-                        <li class="flex items-center justify-center"><i class="fas fa-check text-green-400 mr-2"></i> Customer Discovery</li>
-                        <li class="flex items-center justify-center"><i class="fas fa-check text-green-400 mr-2"></i> Revenue Models</li>
-                    </ul>
-                </div>
-
-                <!-- Pillar 4 -->
-                <div class="glass-panel rounded-2xl p-6 text-center transform transition-all duration-500 hover-3d group relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="floating-icon w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg">
-                        <i class="fa-solid fa-bullhorn"></i>
-                    </div>
-                    <h3 class="font-black text-xl mb-4 text-white leading-tight">Pitching & Market Readiness</h3>
-                    <ul class="text-white/80 space-y-2 text-sm font-medium">
-                        <li class="flex items-center justify-center"><i class="fas fa-check text-purple-400 mr-2"></i> Pitch Deck Development</li>
-                        <li class="flex items-center justify-center"><i class="fas fa-check text-purple-400 mr-2"></i> Storytelling</li>
-                        <li class="flex items-center justify-center"><i class="fas fa-check text-purple-400 mr-2"></i> Demo-Day Sessions</li>
-                    </ul>
-                </div>
-
-                <!-- Pillar 5 -->
-                <div class="glass-panel rounded-2xl p-6 text-center transform transition-all duration-500 hover-3d group relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="floating-icon w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg">
-                        <i class="fa-solid fa-users-rays"></i>
-                    </div>
-                    <h3 class="font-black text-xl mb-4 text-white leading-tight">Mentorship & Coaching</h3>
-                    <ul class="text-white/80 space-y-2 text-sm font-medium">
-                        <li class="flex items-center justify-center"><i class="fas fa-check text-pink-400 mr-2"></i> One-to-One Support</li>
-                        <li class="flex items-center justify-center"><i class="fas fa-check text-pink-400 mr-2"></i> Women-Led Mentorship</li>
-                        <li class="flex items-center justify-center"><i class="fas fa-check text-pink-400 mr-2"></i> Expert Guidance</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Program Impact -->
-        <section class="relative z-10">
-            <div class="flex items-center gap-6 mb-12">
-                <h2 class="text-4xl font-black text-white flex items-center">
-                    <i class="fas fa-chart-bar mr-4 text-sparkOrange"></i>
-                    OUR IMPACT 
-                    <span class="text-xl font-normal text-white/70 ml-3">(2020-2025)</span>
-                </h2>
-                <div class="h-1 flex-grow bg-gradient-to-r from-sparkOrange via-sparkTeal to-sparkPurple rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Stat 1 -->
-                <div class="glass-panel-intense rounded-3xl p-8 flex items-center justify-between group hover-3d relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-sparkBlue/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div>
-                        <span class="block text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-sparkBlue to-cyan-500 animate-pulse">200+</span>
-                        <span class="text-white/80 font-semibold leading-tight mt-3 block text-lg">Prototypes & Micro-innovations</span>
-                    </div>
-                    <i class="fa-solid fa-microchip text-5xl text-sparkBlue/50 group-hover:text-sparkBlue transition-colors duration-500 floating-icon"></i>
-                </div>
-
-                <!-- Stat 2 -->
-                <div class="glass-panel-intense rounded-3xl p-8 flex items-center justify-between group hover-3d relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-sparkOrange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div>
-                        <span class="block text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-sparkOrange to-yellow-500 animate-pulse" style="animation-delay: 0.5s;">500+</span>
-                        <span class="text-white/80 font-semibold leading-tight mt-3 block text-lg">Trainees in Innovation & Entrepreneurship</span>
-                    </div>
-                    <i class="fa-solid fa-graduation-cap text-5xl text-sparkOrange/50 group-hover:text-sparkOrange transition-colors duration-500 floating-icon" style="animation-delay: 1s;"></i>
-                </div>
-
-                <!-- Stat 3 -->
-                <div class="glass-panel-intense rounded-3xl p-8 flex items-center justify-between group hover-3d relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-sparkPurple/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div>
-                        <span class="block text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-sparkPurple to-pink-500 animate-pulse" style="animation-delay: 1s;">60%</span>
-                        <span class="text-white/80 font-semibold leading-tight mt-3 block text-lg">Participation by Women & Girls</span>
-                    </div>
-                    <i class="fa-solid fa-venus text-5xl text-sparkPurple/50 group-hover:text-sparkPurple transition-colors duration-500 floating-icon" style="animation-delay: 1.5s;"></i>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="mt-16 text-center">
-            <button class="spark-button text-white font-bold text-lg px-10 py-4 rounded-2xl magnetic-btn">
-                <i class="fas fa-rocket mr-3"></i>
-                JOIN THE SPARK MOVEMENT
-            </button>
-        </section>
-        
-        <!-- Footer -->
-        <footer class="mt-16 text-center border-t border-white/10 pt-8">
-            <p class="text-white/60 text-lg font-medium shimmer-text">Designed for SPARK • Innovation for a Better Future</p>
-            <div class="flex justify-center space-x-6 mt-4">
-                <a href="#" class="text-white/50 hover:text-sparkBlue transition-colors duration-300 text-xl"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="text-white/50 hover:text-sparkBlue transition-colors duration-300 text-xl"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="text-white/50 hover:text-sparkBlue transition-colors duration-300 text-xl"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-white/50 hover:text-sparkBlue transition-colors duration-300 text-xl"><i class="fab fa-youtube"></i></a>
-            </div>
-        </footer>
-
+        </div>
     </div>
+
+    <!-- قسم إضافي للتأكد من التمرير -->
+    <section class="py-20 px-4 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-black text-white mb-8">المزيد من المحتوى</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-panel p-6 rounded-2xl">
+                    <i class="fas fa-star text-yellow-400 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">نجاحاتنا</h3>
+                    <p class="text-white/70">تعرف على قصص النجاح الملهمة لخريجي برنامج SPARK</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl">
+                    <i class="fas fa-calendar text-sparkBlue text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">الفعاليات</h3>
+                    <p class="text-white/70">شارك في فعالياتنا القادمة وورش العمل التخصصية</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl">
+                    <i class="fas fa-handshake text-sparkOrange text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">الشركاء</h3>
+                    <p class="text-white/70">تعرف على شركائنا في دعم الابتكار وريادة الأعمال</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script>
         // Advanced Particle System
@@ -615,7 +655,7 @@
             gsap.registerPlugin(ScrollTrigger, TextPlugin);
             
             // Animate elements on scroll with GSAP
-            gsap.utils.toEach('.glass-panel, .glass-panel-intense', (panel, i) => {
+            gsap.utils.toArray('.glass-panel, .glass-panel-intense').forEach((panel, i) => {
                 gsap.from(panel, {
                     opacity: 0,
                     y: 100,
